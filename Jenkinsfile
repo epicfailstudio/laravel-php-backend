@@ -27,7 +27,7 @@ pipeline {
             steps {
                 echo "Build Machines";
 
-                sh "docker build --no-cache --tag $PACKAGE:$BUILD_NUMBER"
+                sh "docker build --no-cache --tag $PACKAGE:$BUILD_NUMBER ./"
             }
         }
         stage( "Release" ){
