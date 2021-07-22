@@ -1,27 +1,29 @@
 FROM php:7.4-fpm
 
-RUN apt-get update && apt-get install -y libmcrypt-dev libc-client-dev libkrb5-dev zlib1g-dev libpq-dev libcurl3-dev curl \
+RUN apt-get update && apt-get install -y libmcrypt-dev libc-client-dev libkrb5-dev zlib1g-dev libpq-dev libcurl3-dev \
     default-mysql-client libmagickwand-dev --no-install-recommends
-RUN pecl install imagick
 
 RUN apt-get install -y libzip-dev
 RUN apt-get install -y libonig-dev
 
-RUN apt-get install -y git
+RUN apt-get install -y curl git unzip less vim
 
+# Install imagick with ghostscript
+RUN pecl install imagick
 RUN docker-php-ext-enable imagick
+RUN apt-get install -y ghostscript
+
+# Install PHP extenstions
 RUN docker-php-ext-install zip mbstring pdo_mysql
 RUN docker-php-ext-configure imap --with-imap --with-imap-ssl --with-kerberos \
 	&& docker-php-ext-install imap
 RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
     && docker-php-ext-install pgsql pdo_pgsql
-RUN docker-php-ext-install json xml exif curl dom gd iconv mysqli bcmath fileinfo intl
-RUN docker-php-ext-install soap
+RUN docker-php-ext-install json soap xml exif curl dom gd iconv mysqli bcmath fileinfo intl
 
+# Install python3
 RUN apt-get install -y vim procps
 RUN apt-get update && apt-get install -y python3 python3-pip
-
-RUN apt-get install -y ghostscript
 
 # Use the default production configuration
 RUN echo 'short_open_tag = Off' >> $PHP_INI_DIR/php.ini

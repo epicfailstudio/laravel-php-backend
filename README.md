@@ -1,6 +1,6 @@
 # Laravel PHP Backend
 
-[![Build Status](https://jenkins.epicfail.dev/buildStatus/icon?job=Docker+-+Laravel+PHP+Build)](https://jenkins.epicfail.dev/job/Docker%20-%20Laravel%20PHP%20Build/)
+[![Build Status](https://jenkins.epicfail.dev/buildStatus/icon?job=Docker+-+Laravel+PHP+Backend)](https://jenkins.epicfail.dev/job/Docker%20-%20Laravel%20PHP%20Backend/)
 
 This is a docker PHP package used for the production environments with pre-setup packages and production PHP config.
 Image is located on Docker Hub under `epicfailstudio/laravel-php-backend`
