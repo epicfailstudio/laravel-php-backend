@@ -35,14 +35,14 @@ pipeline {
                 sh "docker image tag $PACKAGE:$BUILD_NUMBER $REGISTRY:latest"
                 sh "docker image tag $PACKAGE:$BUILD_NUMBER $REGISTRY:$VERSION"
 
-//                 sh "docker image push --all-tags $REGISTRY"
+                sh "docker image push --all-tags $REGISTRY"
             }
         }
         stage( "Cleanup" ){
             steps {
+                sh "docker rmi $REGISTRY:latest"
+                sh "docker rmi $REGISTRY:$VERSION"
                 sh "docker rmi laravel-php-backend:$BUILD_NUMBER"
-                sh "docker rmi $REGISTRY:$BUILD_NUMBER:latest"
-                sh "docker rmi $REGISTRY:$BUILD_NUMBER:$VERSION"
             }
         }
     }
