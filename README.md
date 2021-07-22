@@ -1,9 +1,3 @@
 # Laravel PHP Backend
 
-### BUILD and PUSH conainters
-#### Backend
-```
-$ cd epicfailstudio/laravel-php-backend
-$ docker build --no-cache --tag epicfailstudio/laravel-php-backend:7.4php ./
-$ docker push epicfailstudio/laravel-php-backend:7.4php
-```
+[![Build Status](https://jenkins.epicfail.dev/buildStatus/icon?job=Docker+-+Laravel+PHP+Build)](https://jenkins.epicfail.dev/job/Docker%20-%20Laravel%20PHP%20Build/)
