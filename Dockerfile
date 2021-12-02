@@ -34,4 +34,7 @@ RUN echo 'file_uploads = On' >> $PHP_INI_DIR/php.ini
 RUN echo 'upload_max_filesize = 48M' >> $PHP_INI_DIR/php.ini
 RUN echo 'max_file_uploads = 20' >> $PHP_INI_DIR/php.ini
 
+# https://stackoverflow.com/questions/52998331/imagemagick-security-policy-pdf-blocking-conversion
+RUN sed -i '/disable ghostscript format types/,+6d' /etc/ImageMagick-6/policy.xml
+
 WORKDIR /var/www
