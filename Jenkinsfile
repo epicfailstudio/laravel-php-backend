@@ -10,7 +10,7 @@ pipeline {
     }
     environment {
         PACKAGE = 'laravel-php-backend'
-        VERSION = '7.4php'
+        VERSION = '8.0php'
         REGISTRY = "epicfailstudio/laravel-php-backend"
     }
     stages {

@@ -1,4 +1,4 @@
-FROM php:7.4-fpm
+FROM php:8.0-fpm
 
 RUN apt-get update && apt-get install -y libmcrypt-dev libc-client-dev libkrb5-dev zlib1g-dev libpq-dev libcurl3-dev \
     default-mysql-client libmagickwand-dev --no-install-recommends
@@ -19,7 +19,7 @@ RUN docker-php-ext-configure imap --with-imap --with-imap-ssl --with-kerberos \
 	&& docker-php-ext-install imap
 RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
     && docker-php-ext-install pgsql pdo_pgsql
-RUN docker-php-ext-install json soap xml exif curl dom gd iconv mysqli bcmath fileinfo intl
+RUN docker-php-ext-install soap xml exif curl dom gd iconv mysqli bcmath fileinfo intl
 
 # Install python3
 RUN apt-get install -y vim procps
