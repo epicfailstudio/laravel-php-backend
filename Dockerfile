@@ -37,4 +37,7 @@ RUN echo 'max_file_uploads = 20' >> $PHP_INI_DIR/php.ini
 # https://stackoverflow.com/questions/52998331/imagemagick-security-policy-pdf-blocking-conversion
 RUN sed -i '/disable ghostscript format types/,+6d' /etc/ImageMagick-6/policy.xml
 
+# set user as www-data because default user sometimes mess with privileges when multiple machines access to the same resource
+USER www-data
+
 WORKDIR /var/www
