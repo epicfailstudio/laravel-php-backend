@@ -1,4 +1,4 @@
-FROM php:8.0-fpm
+FROM php:8.1-fpm
 
 RUN apt-get update && apt-get install -y libmcrypt-dev libc-client-dev libkrb5-dev zlib1g-dev libpq-dev libcurl3-dev \
     default-mysql-client libmagickwand-dev --no-install-recommends
@@ -27,11 +27,11 @@ RUN apt-get update && apt-get install -y python3 python3-pip
 
 # Use the default production configuration
 RUN echo 'short_open_tag = Off' >> $PHP_INI_DIR/php.ini
-RUN echo 'max_execution_time = 60' >> $PHP_INI_DIR/php.ini
-RUN echo 'max_input_time = 60' >> $PHP_INI_DIR/php.ini
+RUN echo 'max_execution_time = 120' >> $PHP_INI_DIR/php.ini
+RUN echo 'max_input_time = 120' >> $PHP_INI_DIR/php.ini
 RUN echo 'max_input_vars = 20000' >> $PHP_INI_DIR/php.ini
 RUN echo 'file_uploads = On' >> $PHP_INI_DIR/php.ini
-RUN echo 'upload_max_filesize = 48M' >> $PHP_INI_DIR/php.ini
+RUN echo 'upload_max_filesize = 64M' >> $PHP_INI_DIR/php.ini
 RUN echo 'max_file_uploads = 20' >> $PHP_INI_DIR/php.ini
 
 # https://stackoverflow.com/questions/52998331/imagemagick-security-policy-pdf-blocking-conversion
