@@ -29,6 +29,8 @@ RUN docker-php-ext-install soap xml exif curl dom gd iconv mysqli bcmath fileinf
 RUN apt-get install -y vim procps
 RUN apt-get update && apt-get install -y python3 python3-pip
 
+RUN apt install -t bookworm-backports -y libheif1 libheif-dev
+
 # Use the default production configuration
 RUN echo 'short_open_tag = Off' >> $PHP_INI_DIR/php.ini
 RUN echo 'max_execution_time = 120' >> $PHP_INI_DIR/php.ini
