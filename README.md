@@ -6,7 +6,7 @@ This is a docker PHP package used for the production environments with pre-setup
 Image is located on Docker Hub under `epicfailstudio/laravel-php-backend`
 
 ## Core image
-Based on `php:8.1-fpm` docker image
+Based on `php:8.3-fpm` docker image
 
 ### PHP extensions:
 * Database connection: `mysql, pgsql`
