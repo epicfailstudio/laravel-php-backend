@@ -1,6 +1,10 @@
-FROM php:8.1-fpm
+FROM php:8.3-fpm
 
-RUN apt-get update && apt-get install -y libmcrypt-dev libc-client-dev libkrb5-dev zlib1g-dev libpq-dev libcurl3-dev \
+RUN echo "deb http://deb.debian.org/debian bookworm-backports main" > /etc/apt/sources.list.d/backport.list
+
+RUN apt-get update
+
+RUN apt-get install -y libmcrypt-dev libc-client-dev libkrb5-dev zlib1g-dev libpq-dev libcurl3-dev \
     default-mysql-client libmagickwand-dev --no-install-recommends
 
 RUN apt-get install -y libzip-dev
