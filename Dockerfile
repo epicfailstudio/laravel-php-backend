@@ -25,6 +25,9 @@ RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
     && docker-php-ext-install pgsql pdo_pgsql
 RUN docker-php-ext-install soap xml exif curl dom gd iconv mysqli bcmath fileinfo intl
 
+RUN docker-php-ext-configure ftp --with-openssl-dir=/usr \
+	&& docker-php-ext-install ftp
+
 # Install python3
 RUN apt-get install -y vim procps
 RUN apt-get update && apt-get install -y python3 python3-pip
