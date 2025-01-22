@@ -1,4 +1,4 @@
-FROM php:8.2-fpm
+FROM php:8.3-fpm
 
 RUN echo "deb http://deb.debian.org/debian bookworm-backports main" > /etc/apt/sources.list.d/backport.list
 
@@ -13,8 +13,20 @@ RUN apt-get install -y libonig-dev
 RUN apt-get install -y curl git unzip less vim
 
 # Install imagick with ghostscript
-RUN pecl install imagick
-RUN docker-php-ext-enable imagick
+# https://orkhan.dev/2024/02/07/using-imagick-with-php-83-on-docker/
+RUN apt install -y git
+RUN git clone https://github.com/Imagick/imagick.git --depth 1 /tmp/imagick && \
+    cd /tmp/imagick && \
+    git fetch origin master && \
+    git switch master && \
+    cd /tmp/imagick && \
+    phpize && \
+    ./configure && \
+    make && \
+    make install && \
+    docker-php-ext-enable imagick
+#RUN pecl install imagick
+#RUN docker-php-ext-enable imagick
 RUN apt-get install -y ghostscript
 
 # Install PHP extenstions
