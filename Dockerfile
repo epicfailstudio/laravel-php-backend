@@ -30,7 +30,7 @@ RUN git clone https://github.com/Imagick/imagick.git --depth 1 /tmp/imagick && \
 RUN apt-get install -y ghostscript
 
 # Install PHP extenstions
-RUN docker-php-ext-install zip mbstring pdo_mysql
+RUN docker-php-ext-install zip mbstring pdo_mysql sockets
 RUN docker-php-ext-configure imap --with-imap --with-imap-ssl --with-kerberos \
 	&& docker-php-ext-install imap
 RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
